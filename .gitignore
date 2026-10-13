@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+*.pyc
+
+# Env & secrets
+.env
+*.env.local
+
+# ML artifacts (large files — train locally)
+artifacts/*.joblib
+artifacts/*.pkl
+
+# Datasets (download separately)
+datasets/*.csv
+datasets/*.json
+datasets/train.csv
+datasets/val.csv
+datasets/test.csv
+
+# Node
+node_modules/
+dist/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Large Deepfake & ML Model Weights (>100MB rejected by GitHub)
+*.pth
+*.pt
+*.bin
+*.onnx
+models/deepfake/pwtf_dvd/*.pth
+backend/models/deepfake/pwtf_dvd/*.pth
+backend/artifacts/*.pth
+backend/artifacts/*.joblib
+backend/artifacts/*.pkl
+
+# Test & Temp Videos
+temp_videos/
+*.mp4_*.pth

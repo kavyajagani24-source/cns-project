@@ -1,0 +1,39 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-10-10T14:47:57.092139+00:00",
+  "dataset": {
+    "train": 149,
+    "validation": 21,
+    "test": 30,
+    "split_method": "domain_grouped"
+  },
+  "model_architecture": {
+    "vectorizer": "TF-IDF char_wb n-gram (3,5) max_features=50000",
+    "classifier": "LogisticRegression C=1.0 balanced class_weight"
+  },
+  "test_results": {
+    "test_accuracy": 1.0,
+    "test_precision": 1.0,
+    "test_recall": 1.0,
+    "test_f1": 1.0,
+    "test_auc": 1.0,
+    "test_fpr": 0.0,
+    "confusion_matrix": [
+      [
+        13,
+        0
+      ],
+      [
+        0,
+        17
+      ]
+    ],
+    "val_f1": 1.0,
+    "val_auc": 1.0
+  },
+  "notes": [
+    "Probability output is uncalibrated. Label as 'model_score' not 'confidence'.",
+    "This model was trained on the dataset in datasets/. Check dataset_metadata.json for provenance.",
+    "Do not use this model as the sole arbiter of safety."
+  ]
+}

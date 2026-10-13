@@ -1,0 +1,12 @@
+{
+  "total_rows": 200,
+  "train_rows": 149,
+  "val_rows": 21,
+  "test_rows": 30,
+  "phishing_count": 100,
+  "legitimate_count": 100,
+  "split_method": "domain_grouped",
+  "random_seed": 42,
+  "source_file": "C:\\Users\\acorp\\OneDrive\\Desktop\\cns-project\\backend\\datasets\\phishing_urls.csv",
+  "source_hash": "35627c43387f2bd1e00db78b772b4bdb"
+}
