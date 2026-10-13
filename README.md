@@ -21,8 +21,8 @@
 | Domain registration (RDAP) | ✅ With fallback |
 | Hybrid risk engine | ✅ Evidence-based policy |
 | Scan history (MongoDB) | ✅ Persisted |
-| Deepfake module | 🔜 Part 2 interface defined |
-| Scam analysis module | 🔜 Part 3 interface defined |
+| Deepfake module (PwTF-DVD) | ✅ Complete (GPU inference + forensic report) |
+| Scam analysis module | 🔜 Part 3 (Next module) |
 
 ---
 
@@ -167,9 +167,9 @@ cns-project/
 
 | Part | Module | Status |
 |---|---|---|
-| **Part 1** | Phishing URL Detection | ✅ Complete |
-| **Part 2** | Deepfake Video Detection (PwTF-DVD) | 🔜 Planned |
-| **Part 3** | Scam & Impersonation Analysis | 🔜 Planned |
+| **Part 1** | Phishing URL Detection & Threat Intelligence | ✅ Complete |
+| **Part 2** | Deepfake Video Detection (PwTF-DVD ICCV 2025) | ✅ Complete |
+| **Part 3** | Scam & Impersonation Analysis (Social Engineering) | 🔜 **Next Module** |
 
 ---
 
