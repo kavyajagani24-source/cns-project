@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Shield, Search, Copy, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+
+import { Search, Copy, AlertCircle, Clock } from 'lucide-react';
+
 import { submitScan, getScan, getApiError } from '../services/api';
 import type { ScanResult } from '../types/api';
 import RiskBadge from '../components/RiskBadge';

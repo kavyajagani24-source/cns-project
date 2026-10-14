@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Shield, Video, Phone, History,
-  Database, Cpu, Settings, Info, ChevronRight
+  Database, Cpu, Info
 } from 'lucide-react';
 
 const navItems = [

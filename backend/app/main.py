@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import get_settings
 from app.core.logging_config import configure_logging
 from app.db.database import connect_db, disconnect_db
-from app.api.routes import health, scan, history, dashboard, deepfake
+from app.api.routes import health, scan, history, dashboard, deepfake, scam
 
 configure_logging()
 logger = logging.getLogger(__name__)
@@ -68,6 +68,7 @@ app.include_router(scan.router)
 app.include_router(history.router)
 app.include_router(dashboard.router)
 app.include_router(deepfake.router)
+app.include_router(scam.router)
 
 
 @app.get("/", tags=["root"])

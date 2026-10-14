@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, AlertTriangle, CheckCircle, HelpCircle, Database, Cpu, TrendingUp } from 'lucide-react';
+
+import { Shield, Database, Cpu, TrendingUp } from 'lucide-react';
+
 import { getDashboardStats } from '../services/api';
 import type { DashboardStats } from '../types/api';
 import RiskBadge from '../components/RiskBadge';
@@ -13,7 +15,7 @@ export default function Dashboard() {
   useEffect(() => {
     getDashboardStats()
       .then(setStats)
-      .catch(e => setError('Cannot connect to backend. Is the API running?'))
+      .catch(() => setError('Cannot connect to backend. Is the API running?'))
       .finally(() => setLoading(false));
   }, []);
 
