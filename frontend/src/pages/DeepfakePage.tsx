@@ -1,5 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { Upload, Video, X, AlertTriangle, CheckCircle, Clock, Info, Film, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
+
+import { Upload, X, AlertTriangle, CheckCircle, Info, Film, Trash2 } from 'lucide-react';
+
 import {
   getDeepfakeHealth,
   analyzeVideo,
@@ -168,7 +170,6 @@ export default function DeepfakePage() {
   }
 
   // ── Model ready? ──────────────────────────────────────────────────────────
-  const modelReady = health?.init_status === 'ready';
   const banner = statusBanner(health?.init_status);
 
   return (
