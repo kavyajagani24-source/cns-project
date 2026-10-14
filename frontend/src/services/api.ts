@@ -108,3 +108,15 @@ export async function getDeepfakeScan(scanId: string): Promise<DeepfakeScanResul
 export async function deleteDeepfakeScan(scanId: string): Promise<void> {
   await deepfakeClient.delete(`/scans/${scanId}`);
 }
+export interface ScamIndicator { code: string; label: string; start: number; end: number; excerpt: string; weight: number; category: string; explanation: string }
+export interface ScamResult { scan_id: string; created_at: string; source_type: string; risk_score: number; rule_score: number; ml_score: number | null; ml_status: string; risk_level: string; scam_type: string; indicators: ScamIndicator[]; mitigation_steps: string[]; disclaimer: string; stored: boolean }
+export interface ScamHistory { items: ScamResult[]; total: number; page: number; page_size: number }
+export async function analyzeScam(text: string, source_type: string, save_history: boolean): Promise<ScamResult> {
+  const { data } = await client.post<ScamResult>('/scam/analyze', { text, source_type, save_history });
+  return data;
+}
+export async function getScamHistory(page = 1): Promise<ScamHistory> {
+  const { data } = await client.get<ScamHistory>('/scam/scans', { params: { page } });
+  return data;
+}
+export async function deleteScamHistory(id: string): Promise<void> { await client.delete(`/scam/scans/${id}`); }

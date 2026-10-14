@@ -62,6 +62,14 @@ async def _ensure_indexes() -> None:
         IndexModel([("status", ASCENDING)]),
         IndexModel([("classification", ASCENDING)]),
     ])
+        # scam_scans collection indexes
+    await db["scam_scans"].create_indexes([
+        IndexModel([("scan_id", ASCENDING)], unique=True),
+        IndexModel([("created_at", ASCENDING)]),
+        IndexModel([("risk_level", ASCENDING)]),
+        IndexModel([("scam_type", ASCENDING)]),
+    ])
+
     # threat_intel_status
     await db["threat_intel_status"].create_indexes([
         IndexModel([("source_name", ASCENDING)], unique=True),
