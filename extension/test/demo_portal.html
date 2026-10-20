@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShield AI — Demo & Verification Suite</title>
+  <link rel="stylesheet" href="demo_portal.css">
+</head>
+<body>
+  <div class="container">
+    <header class="portal-header">
+      <div class="portal-title-group">
+        <h1>
+          <span>🧪</span>
+          <span>CyberShield AI Demo & Test Suite</span>
+        </h1>
+        <p>Pre-configured safe verification scenarios designed to validate acceptance criteria.</p>
+      </div>
+      <div>
+        <a href="../popup/popup.html" class="btn-test-action" target="_blank">Open Popup Preview</a>
+      </div>
+    </header>
+
+    <div class="test-grid">
+      <!-- Scenario 1: Legitimate Safe Domain -->
+      <div class="test-card">
+        <div class="test-card-header">
+          <div class="test-title">
+            <span>🛡️</span>
+            <span>Scenario 1: Benign / Safe Destination</span>
+          </div>
+          <span class="badge badge-safe">SAFE (CLEAN)</span>
+        </div>
+        <div class="test-desc">
+          Validates that legitimate domains pass cleanly through threat intelligence and machine learning without false alarms.
+        </div>
+        <div class="url-preview-box">
+          <span>https://github.com</span>
+          <span style="color: var(--safe-green);">Target: Safe Repo</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-test-action" id="btn-scan-safe">Run API Scan</button>
+          <a href="https://github.com" target="_blank" class="btn-test-action">Open Tab (GitHub)</a>
+        </div>
+        <div class="live-result-drawer" id="result-safe"></div>
+      </div>
+
+      <!-- Scenario 2: Threat Intelligence Match (Phishing Interstitial Warning) -->
+      <div class="test-card">
+        <div class="test-card-header">
+          <div class="test-title">
+            <span>🚨</span>
+            <span>Scenario 2: Threat Intelligence Match (HaGeZi Fixture)</span>
+          </div>
+          <span class="badge badge-phishing">PHISHING WARNING</span>
+        </div>
+        <div class="test-desc">
+          Uses the safe offline fixture domain <code>phishing-test.example</code> (bundled in backend and extension). Triggers full-screen Warning Interstitial and prevents voluntary navigation.
+        </div>
+        <div class="url-preview-box">
+          <span>http://phishing-test.example</span>
+          <span style="color: var(--danger-red);">Target: HaGeZi Test Fixture</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-test-action btn-test-danger" id="btn-scan-ti">Run API Scan</button>
+          <button class="btn-test-action btn-test-danger" id="btn-nav-ti">Simulate Navigation (Triggers Interstitial)</button>
+        </div>
+        <div class="live-result-drawer" id="result-ti"></div>
+      </div>
+
+      <!-- Scenario 3: Lexical Suspicious Domain -->
+      <div class="test-card">
+        <div class="test-card-header">
+          <div class="test-title">
+            <span>⚠️</span>
+            <span>Scenario 3: Heuristic & Lexical Deception Detection</span>
+          </div>
+          <span class="badge badge-suspicious">SUSPICIOUS</span>
+        </div>
+        <div class="test-desc">
+          Simulates a deceptive URL targeting banking credentials with multiple high-risk tokens on a suspicious TLD.
+        </div>
+        <div class="url-preview-box">
+          <span>http://paypal-verification-account-security-alert.xyz/login</span>
+          <span style="color: var(--warning-amber);">Target: Heuristic Flagged</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-test-action" id="btn-scan-suspicious">Run API Scan</button>
+        </div>
+        <div class="live-result-drawer" id="result-suspicious"></div>
+      </div>
+
+      <!-- Scenario 4: Pre-Navigation In-Page Link Click Interception -->
+      <div class="test-card">
+        <div class="test-card-header">
+          <div class="test-title">
+            <span>🖱️</span>
+            <span>Scenario 4: Pre-Navigation Link Click Interceptor</span>
+          </div>
+          <span class="badge badge-phishing">DOM INTERCEPTION</span>
+        </div>
+        <div class="test-desc">
+          Click the link below. The content script intercepts the voluntary click <em>before</em> navigation occurs and renders an in-page modal alert asking for user confirmation.
+        </div>
+        <div class="url-preview-box">
+          <a href="http://phishing-test.example/login" class="interactive-link" id="demo-phish-link">
+            http://phishing-test.example/login (Click Me)
+          </a>
+          <span style="color: var(--text-muted);">Try clicking this link directly!</span>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted);">
+          Note: CyberShield content script pauses the navigation and asks whether you really want to proceed to the dangerous site.
+        </div>
+      </div>
+
+      <!-- Scenario 5: Unavailable API / Offline Graceful Degradation -->
+      <div class="test-card">
+        <div class="test-card-header">
+          <div class="test-title">
+            <span>⚡</span>
+            <span>Scenario 5: Unavailable API Fallback Test</span>
+          </div>
+          <span class="badge badge-offline">OFFLINE DEGRADATION</span>
+        </div>
+        <div class="test-desc">
+          Simulates an unreachable backend (port 9999). Validates that the extension never crashes or blocks browsing, but seamlessly displays the offline fallback status and engages client-side heuristics.
+        </div>
+        <div class="url-preview-box">
+          <span>Target Backend: http://127.0.0.1:9999 (Unreachable)</span>
+          <span style="color: #a78bfa;">Simulation Mode</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-test-action" id="btn-test-offline">Simulate Offline Scan</button>
+        </div>
+        <div class="live-result-drawer" id="result-offline"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="demo_portal.js"></script>
+</body>
+</html>

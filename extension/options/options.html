@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShield AI — Extension Options & Architecture</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div class="header-icon">⚙️</div>
+      <div>
+        <h1>CyberShield AI Settings & Diagnostics</h1>
+        <p>Configure backend API endpoints, protection toggles, and review Manifest V3 browser capabilities.</p>
+      </div>
+    </header>
+
+    <!-- Backend Connection Settings -->
+    <div class="settings-card">
+      <h2>
+        <span>🔌</span>
+        <span>FastAPI Backend Connection</span>
+      </h2>
+      <p class="settings-card-desc">
+        The extension queries this endpoint for real-time machine learning, HaGeZi threat intelligence, DNS, and TLS certificates.
+      </p>
+
+      <div class="form-group">
+        <label for="backend-url-input">API Base URL</label>
+        <div class="input-row">
+          <input type="text" id="backend-url-input" class="text-input" placeholder="http://127.0.0.1:8000" spellcheck="false">
+          <button class="btn-test" id="btn-test-connection">Test Connection</button>
+        </div>
+        <div id="test-result-box" class="test-result-box"></div>
+      </div>
+    </div>
+
+    <!-- Protection Toggles -->
+    <div class="settings-card">
+      <h2>
+        <span>🛡️</span>
+        <span>Protection Controls</span>
+      </h2>
+      <p class="settings-card-desc">
+        Customize how CyberShield protects you during voluntary web navigation.
+      </p>
+
+      <div class="toggle-item">
+        <div class="toggle-info">
+          <h3>Pre-Navigation Interstitial Redirect</h3>
+          <p>Redirects to full-screen warning page before opening known phishing or high-risk sites.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-interstitial" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-info">
+          <h3>Pre-Click Link Interceptor</h3>
+          <p>Intercepts suspicious links inside web pages and presents a confirmation modal before navigation.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-link-interceptor" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-info">
+          <h3>In-Page Warning Banner</h3>
+          <p>Renders a floating alert bar at the top of active web pages classified as phishing or suspicious.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-warning-banner" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-info">
+          <h3>Automatic Navigation Scanning</h3>
+          <p>Continuously updates security badge and telemetry as you browse new web destinations.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-auto-scan" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Browser API Architectural Reality -->
+    <div class="settings-card">
+      <h2>
+        <span>📋</span>
+        <span>Manifest V3 Architecture & Browser API Capabilities</span>
+      </h2>
+      <div class="info-callout">
+        <p>
+          <strong>Technical Clarification on Interception Capabilities:</strong> In Chromium Manifest V3, extensions <em>cannot</em> perform synchronous, blocking network interception with arbitrary external asynchronous API queries before the initial socket handshake occurs. The deprecated <code>chrome.webRequestBlocking</code> API was permanently removed, and <code>declarativeNetRequest</code> only supports pre-compiled, static declarative rules.
+        </p>
+        <p style="margin-top: 8px;">
+          <strong>How CyberShield AI Solves This Legally & Effectively:</strong>
+          <br>1. <strong>Pre-Navigation Lifecycle Interception:</strong> Uses <code>chrome.webNavigation.onBeforeNavigate</code> coupled with high-speed local caching and client-side heuristics to redirect tabs to an internal warning interstitial (<code>warning.html</code>) before loading dangerous pages.
+          <br>2. <strong>Pre-Click DOM Interception:</strong> Uses content scripts to intercept clicks on external links prior to navigation submission.
+          <br>3. <strong>Graceful Offline Fallback:</strong> If the FastAPI backend is down, local heuristics (Punycode, raw IP address, deceptive tokens, known fixtures) maintain protection without breaking web navigation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cache and Bypass Management -->
+    <div class="settings-card">
+      <h2>
+        <span>🧹</span>
+        <span>Storage & Bypass List</span>
+      </h2>
+      <p class="settings-card-desc">
+        Reset cached verdicts, session bypass entries, and local statistics.
+      </p>
+      <button class="btn-test" id="btn-clear-all" style="color: #f87171;">Clear Cache & Session Bypass List</button>
+      <span id="clear-status" style="margin-left: 12px; font-size: 12px; color: var(--safe-green);"></span>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn-save" id="btn-save-settings">Save Settings</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

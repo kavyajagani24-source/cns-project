@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShield AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header with Brand and Backend Connection Status -->
+  <header class="app-header">
+    <div class="brand-group">
+      <div class="brand-icon">🛡️</div>
+      <div>
+        <div class="brand-title">CyberShield AI</div>
+        <span class="brand-badge">URL GUARD</span>
+      </div>
+    </div>
+    <div class="backend-status-pill" id="backend-status-pill" title="FastAPI Backend Status">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="backend-status-text">Checking...</span>
+    </div>
+  </header>
+
+  <!-- Offline Notice Banner -->
+  <div class="offline-banner" id="offline-banner">
+    <div>
+      <strong>Offline Fallback:</strong> FastAPI backend unreachable. Local heuristic guard active.
+    </div>
+    <button class="btn-retry-health" id="btn-retry-health">Retry</button>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-indicator" id="loading-state">
+    <div class="spinner"></div>
+    <span>Analyzing security posture...</span>
+  </div>
+
+  <!-- Main Content Container -->
+  <main id="main-content" style="display: none;">
+    <!-- Active URL Inspector Card -->
+    <div class="url-card">
+      <div class="url-host-row">
+        <span class="url-host" id="active-host">Loading...</span>
+        <button class="btn-copy" id="btn-copy-url" title="Copy active URL">📋</button>
+      </div>
+      <div class="url-full" id="active-url">https://...</div>
+    </div>
+
+    <!-- Risk Assessment Gauge Card -->
+    <div class="risk-meter-card" id="risk-card">
+      <div class="risk-label-group">
+        <div class="risk-category-badge safe" id="risk-badge">
+          <span id="risk-badge-icon">✓</span>
+          <span id="risk-badge-text">SAFE</span>
+        </div>
+        <div class="risk-subtext" id="risk-summary-text">Verified benign web property</div>
+      </div>
+      <div class="risk-score-display">
+        <span class="score-num" id="risk-score-val">0</span>
+        <span class="score-pct">RISK</span>
+      </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="telemetry">Evidence</button>
+      <button class="tab-btn" data-tab="tools">Demo & Suite</button>
+    </div>
+
+    <!-- Tab 1: Overview -->
+    <div class="tab-pane active" id="pane-overview">
+      <div class="section-title">Security Evidence</div>
+      <ul class="evidence-items-list" id="evidence-list">
+        <!-- Rendered dynamically -->
+      </ul>
+
+      <div class="section-title">Recommended Action</div>
+      <div class="evidence-item" id="action-box">
+        <span class="icon">💡</span>
+        <span id="action-text">No immediate threat detected. Standard safe browsing practices.</span>
+      </div>
+    </div>
+
+    <!-- Tab 2: Telemetry Details -->
+    <div class="tab-pane" id="pane-telemetry">
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-card-title">Threat Intelligence</div>
+          <div class="telemetry-card-val" id="telemetry-ti-val">Clean</div>
+          <div class="telemetry-card-sub" id="telemetry-ti-sub">HaGeZi TIF Feed</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-card-title">Machine Learning</div>
+          <div class="telemetry-card-val" id="telemetry-ml-val">0.0%</div>
+          <div class="telemetry-card-sub" id="telemetry-ml-sub">TF-IDF Classifier</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-card-title">TLS Certificate</div>
+          <div class="telemetry-card-val" id="telemetry-tls-val">Valid</div>
+          <div class="telemetry-card-sub" id="telemetry-tls-sub">Standard HTTPS</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-card-title">DNS Resolution</div>
+          <div class="telemetry-card-val" id="telemetry-dns-val">Resolved</div>
+          <div class="telemetry-card-sub" id="telemetry-dns-sub">Normal response</div>
+        </div>
+      </div>
+
+      <div class="section-title">Engine Metadata</div>
+      <div class="evidence-item" style="font-size: 11px; color: var(--text-muted);" id="engine-meta">
+        Scan latency: 0ms · Backend: FastAPI 127.0.0.1:8000
+      </div>
+    </div>
+
+    <!-- Tab 3: Demo & Tools -->
+    <div class="tab-pane" id="pane-tools">
+      <div class="tools-list">
+        <div class="tool-card-btn" id="btn-open-demo-portal">
+          <div class="tool-title">
+            <span>🧪</span>
+            <span>Interactive Demo & Test Suite</span>
+          </div>
+          <div class="tool-desc">
+            Test safe URLs, threat blocklist matches, suspicious heuristics, and link interceptors.
+          </div>
+        </div>
+
+        <div class="tool-card-btn" id="btn-open-options">
+          <div class="tool-title">
+            <span>⚙️</span>
+            <span>Extension Settings</span>
+          </div>
+          <div class="tool-desc">
+            Configure backend URL, sensitivity, auto-scan, and link interception.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="footer-actions">
+      <button class="btn-action-primary" id="btn-rescan">
+        <span>🔄</span>
+        <span>Re-scan Tab</span>
+      </button>
+      <button class="btn-action-outline" id="btn-clear-cache" title="Clear scan cache and session bypass list">
+        Clear Cache
+      </button>
+    </div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

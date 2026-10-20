@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Alert — CyberShield AI</title>
+  <link rel="stylesheet" href="warning.css">
+</head>
+<body>
+  <div class="warning-container">
+    <div class="warning-header">
+      <div class="shield-icon-wrapper" id="threat-icon">
+        🚨
+      </div>
+      <div class="warning-title-group">
+        <span class="badge-risk phishing" id="risk-badge">PHISHING DETECTED</span>
+        <h1 id="warning-heading">Deceptive Website Warning Ahead</h1>
+      </div>
+    </div>
+
+    <p class="warning-lead">
+      CyberShield AI has intercepted navigation to this URL because it exhibits strong indicators of a malicious, phishing, or spoofed web property designed to compromise passwords, credentials, or private information.
+    </p>
+
+    <div class="target-url-card">
+      <div class="target-url-label">Target Destination</div>
+      <div class="target-url-text" id="target-url">https://example.com</div>
+    </div>
+
+    <div class="evidence-box">
+      <h3>
+        <span>🔍</span>
+        <span>Observed Threat Signals</span>
+      </h3>
+      <ul id="evidence-list">
+        <li>Analyzing security telemetry...</li>
+      </ul>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-primary-safe" id="btn-back-safety">
+        <span>🛡️</span>
+        <span>Back to Safety (Recommended)</span>
+      </button>
+      <button class="btn-secondary" id="btn-close-tab">
+        Close Tab
+      </button>
+    </div>
+
+    <div class="accordion-details">
+      <details>
+        <summary class="details-summary">Advanced: Technical analysis & bypass options</summary>
+        <div class="details-content">
+          <p>
+            <strong>How CyberShield Protected You:</strong> In compliance with Manifest V3 standards, CyberShield monitors pre-navigation lifecycle events and analyzes the target against its hybrid threat engine (HaGeZi blocklists, ML classifier, and offline heuristics).
+          </p>
+          <p>
+            If you are an authorized security analyst or are confident this is a false alarm, you can proceed. Note that bypass persists only for the current browser session.
+          </p>
+          <button class="btn-proceed-unsafe" id="btn-proceed-unsafe">
+            I understand the risk — Proceed anyway
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <div class="footer-note">
+      CyberShield AI Phishing Guard · Powered by FastAPI Threat Engine
+    </div>
+  </div>
+
+  <script src="warning.js"></script>
+</body>
+</html>

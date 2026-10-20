@@ -23,6 +23,8 @@
 | Scan history (MongoDB) | ✅ Persisted |
 | Deepfake module (PwTF-DVD) | ✅ Complete (GPU inference + forensic report) |
 | Scam analysis module | 🔜 Part 3 (Next module) |
+| Chromium Extension (Task B) | ✅ Complete (Manifest V3 URL Threat Guard) |
+
 
 ---
 
@@ -153,6 +155,13 @@ cns-project/
 │   ├── tests/                   # 34 pytest tests
 │   ├── artifacts/               # Trained model (gitignored)
 │   └── datasets/                # URL datasets (gitignored)
+├── extension/                  # Chromium Manifest V3 browser extension
+│   ├── background/             # Service worker, heuristics, cache, api client
+│   ├── content/                # In-page link interceptor and warning banner
+│   ├── popup/                  # Extension HUD and risk gauge
+│   ├── warning/                # Warning interstitial page
+│   ├── options/                # Settings & diagnostics
+│   └── test/                   # Interactive demo & verification portal
 └── frontend/
     └── src/
         ├── components/          # Sidebar, RiskBadge
